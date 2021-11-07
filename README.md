@@ -5,8 +5,8 @@ The credentials currently supported to be stored are: **WiFi** (SSID and passwor
 
 ## Usage
 ### Initialization
-```
-include <Credentials.h>
+```cpp
+#include <Credentials.h>
 
 Credentials credentials;
 credentials.begin();
@@ -14,41 +14,41 @@ credentials.begin();
 
 ### WiFi
 Store WiFi SSID and password crendetials:
-```
+```cpp
 bool setWiFiCredentials((char* ssid, char* password);
 ```
 Get WiFi SSID and password:
-```
+```cpp
 char* getSSID(void);
 char* getSSIDPassword(void);
 ```
 ### Firebase
 Store Firebase email, password and user id:
-```
+```cpp
 bool setFirebaseCredentials(char* email, char* password, char* userId);
 ```
 Get email, password and user id:
-```
+```cpp
 char* getEmail(void);
 char* getEmailPassword(void);
 char* getUserId(void);
 ```
 ### Device Id
 Store a device id for the microcontroller:
-```
+```cpp
 bool setDeviceId(char* deviceId);
 ```
 Get device id:
-```
+```cpp
 char* getDeviceId(void);
 ```
 ### Other
 Clear WiFi and Firebase credentials
-```
+```cpp
 bool clear(void);
 ```
 Clear everything (use carefully, normally you won't want to delete de Device Id)
-```
+```cpp
 bool clearAll(void);
 ```
 
