@@ -53,4 +53,5 @@ bool clearAll(void);
 ```
 
 ## TODO
-Make it a singleton
+- [ ] Make the class a singleton
+- [ ] Add examples
