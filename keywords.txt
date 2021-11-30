@@ -1,0 +1,30 @@
+#########################################
+# Syntax Coloring Map Credentials
+#########################################
+
+#########################################
+# Datatypes (KEYWORD1)
+#########################################
+
+Credentials             KEYWORD1
+
+###############################################
+# Methods and Functions (KEYWORD2)
+###############################################
+
+begin                   KEYWORD2
+getSSID                 KEYWORD2
+getSSIDPassword         KEYWORD2
+getEmail                KEYWORD2
+getEmailPassword        KEYWORD2
+getUserId               KEYWORD2
+getDeviceId             KEYWORD2
+setDeviceId             KEYWORD2
+setWiFiCredentials      KEYWORD2
+setFirebaseCredentials  KEYWORD2
+clear                   KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################
+WORD_MAX_SIZE           LITERAL1
