@@ -56,3 +56,4 @@ bool clearAll(void);
 - [ ] Make the class a singleton
 - [x] Add example
 - [ ] Improve example and add comments
+- [ ] Make the library Arduino IDE friendly
