@@ -1,7 +1,7 @@
 # Credentials
 Credentials manager for Arduino based projects using EEPROM (also works with esp8266 and esp32). This tool will help you to store "permanently" different credentials that could be needed in your project.
 
-The credentials currently supported to be stored are: **WiFi** (SSID and password), **Firebase** (email, password and user id) and **Deveice Id**.
+The credentials currently supported to be stored are: **WiFi** (SSID and password), **Account** (email, password and an optional user id) and **Deveice Id**.
 
 ## Usage
 ### Initialization
@@ -22,12 +22,16 @@ Get WiFi SSID and password:
 char* getSSID(void);
 char* getSSIDPassword(void);
 ```
-### Firebase
-Store Firebase email, password and user id:
+### Account
+Store an account email and password:
 ```cpp
-bool setFirebaseCredentials(char* email, char* password, char* userId);
+bool setAccountCredentials(char* email, char* password);
 ```
-Get email, password and user id:
+Store an account email, password and user id:
+```cpp
+bool setAccountCredentials(char* email, char* password, char* userId);
+```
+Get email, password and user id (if is set):
 ```cpp
 char* getEmail(void);
 char* getEmailPassword(void);
@@ -43,7 +47,7 @@ Get device id:
 char* getDeviceId(void);
 ```
 ### Other
-Clear WiFi and Firebase credentials
+Clear WiFi and Account credentials
 ```cpp
 bool clear(void);
 ```
@@ -52,8 +56,20 @@ Clear everything (use carefully, normally you won't want to delete de Device Id)
 bool clearAll(void);
 ```
 
+## Dev using Platformio
+
+### Init project
+```bash
+pio project init --board nodemcuv2
+```
+### Link the example main.cpp to src (this is optional)
+```bash
+cd src/
+ln -s ../examples/main.cpp main.cpp
+```
+
 ## TODO
-- [ ] Make the class a singleton
 - [x] Add example
 - [ ] Improve example and add comments
 - [ ] Make the library Arduino IDE friendly
+- [x] Add development instructions
