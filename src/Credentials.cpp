@@ -144,7 +144,16 @@ bool Credentials::setWiFiCredentials(char* ssid, char* password) {
     return false;
 }
 
-bool Credentials::setFirebaseCredentials(char* email, char* password, char* userId) {
+bool Credentials::setAccountCredentials(char* email, char* password) {
+    if (_clearEmail() && _clearEmailPassword() && _clearUserId()) {
+        if (_setEmail(email) && _setEmailPassword(password)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Credentials::setAccountCredentials(char* email, char* password, char* userId) {
     if (_clearEmail() && _clearEmailPassword() && _clearUserId()) {
         if (_setEmail(email) && _setEmailPassword(password) && _setUserId(userId)) {
             return true;

@@ -35,7 +35,8 @@ class Credentials {
         char* getDeviceId(void);
         bool setDeviceId(char* deviceId);
         bool setWiFiCredentials(char* ssid, char* password);
-        bool setFirebaseCredentials(char* email, char* password, char* userId);
+        bool setAccountCredentials(char* email, char* password);
+        bool setAccountCredentials(char* email, char* password, char* userId);
         bool clear(void);
         bool clearAll(void);
 };
