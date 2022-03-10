@@ -11,8 +11,10 @@ char* readSerial(const char* label);
 void setup() {
     credentials.begin();
     Serial.begin(115200);
+    delay(5000);
+    Serial.println();
     setupCredencials();
-    pinMode(D5, INPUT);
+    pinMode(D3, INPUT_PULLUP);
     pastTime = millis();
 }
 
@@ -28,9 +30,13 @@ void loop() {
         Serial.print(F("Email Passowrd: "));
         Serial.println(credentials.getEmailPassword());
         Serial.print(F("User Id: "));
-        Serial.println(credentials.getUserId());
+        if (strlen(credentials.getUserId()) == 0) {
+            Serial.println(F("*Not Set*"));
+        } else {
+            Serial.println(credentials.getUserId());
+        }
     }
-    if (digitalRead(D5)) {
+    if (!digitalRead(D3)) {
         Serial.println(F("Credentials Cleared"));
         credentials.clear();
         Serial.println(F("Now Restarting"));
@@ -44,12 +50,19 @@ void setupCredencials(void) {
     char emailPassword[WORD_MAX_SIZE];
     char userId[WORD_MAX_SIZE];
     strcpy(ssid, readSerial("SSID:"));
-    strcpy(ssid, readSerial("SSID Password:"));
-    strcpy(ssid, readSerial("Email:"));
-    strcpy(ssid, readSerial("Email Password:"));
-    strcpy(ssid, readSerial("User Id:"));
-    credentials.setWiFiCredentials(ssid, ssidPassword);
-    credentials.setFirebaseCredentials(email, emailPassword, userId);
+    strcpy(ssidPassword, readSerial("SSID Password:"));
+    strcpy(email, readSerial("Email:"));
+    strcpy(emailPassword, readSerial("Email Password:"));
+    strcpy(userId, readSerial("User Id:"));
+    if (strcmp(userId, "no") == 0) {
+        Serial.println("UserId not Available");
+        credentials.setWiFiCredentials(ssid, ssidPassword);
+        credentials.setAccountCredentials(email, emailPassword);
+    } else {
+        Serial.println("UserId Available");
+        credentials.setWiFiCredentials(ssid, ssidPassword);
+        credentials.setAccountCredentials(email, emailPassword, userId);
+    }
 }
 
 char* readSerial(const char* label) {
@@ -64,5 +77,5 @@ char* readSerial(const char* label) {
         }
     }
     Serial.println(data);
-    return data;    
+    return data;
 }
