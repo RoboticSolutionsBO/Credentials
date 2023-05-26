@@ -5,7 +5,7 @@ Credentials credentials;
 const int delayTime = 5000;
 long int pastTime = 0;
 
-void setupCredencials(void);
+void setupCredencials();
 char* readSerial(const char* label);
 
 void setup() {
@@ -43,7 +43,7 @@ void loop() {
     }
 }
 
-void setupCredencials(void) {
+void setupCredencials() {
     char ssid[WORD_MAX_SIZE];
     char ssidPassword[WORD_MAX_SIZE];
     char email[WORD_MAX_SIZE];

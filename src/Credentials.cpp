@@ -1,8 +1,8 @@
 #include "Credentials.h"
 
-Credentials::Credentials(void) {};
+Credentials::Credentials() {};
 
-void Credentials::begin(void) {
+void Credentials::begin() {
     EEPROM.begin(EEPROM_SIZE);
 }
 
@@ -41,42 +41,42 @@ bool Credentials::_setUserId(char* userId) {
     return EEPROM.commit();
 }
 
-bool Credentials::_clearSSID(void) {
+bool Credentials::_clearSSID() {
     for (size_t i = 0; i < WORD_MAX_SIZE; i++) {
         EEPROM.write(ADDRESS_SSID + i, 0);
     }
     return EEPROM.commit();
 }
 
-bool Credentials::_clearSSIDPassword(void) {
+bool Credentials::_clearSSIDPassword() {
     for (size_t i = 0; i < WORD_MAX_SIZE; i++) {
         EEPROM.write(ADDRESS_SSID_PASSWORD + i, 0);
     }
     return EEPROM.commit();
 }
 
-bool Credentials::_clearEmail(void) {
+bool Credentials::_clearEmail() {
     for (size_t i = 0; i < WORD_MAX_SIZE; i++) {
         EEPROM.write(ADDRESS_EMAIL + i, 0);
     }
     return EEPROM.commit();
 }
 
-bool Credentials::_clearEmailPassword(void) {
+bool Credentials::_clearEmailPassword() {
     for (size_t i = 0; i < WORD_MAX_SIZE; i++) {
         EEPROM.write(ADDRESS_EMAIL_PASSWORD + i, 0);
     }
     return EEPROM.commit();
 }
 
-bool Credentials::_clearUserId(void) {
+bool Credentials::_clearUserId() {
     for (size_t i = 0; i < WORD_MAX_SIZE; i++) {
         EEPROM.write(ADDRESS_USER_ID + i, 0);
     }
     return EEPROM.commit();
 }
 
-char* Credentials::getSSID(void) {
+char* Credentials::getSSID() {
     char* ssid = new char[WORD_MAX_SIZE];
     for (uint8_t i = 0; i < WORD_MAX_SIZE; i++) {
         ssid[i] = char(EEPROM.read(ADDRESS_SSID + i));
@@ -84,7 +84,7 @@ char* Credentials::getSSID(void) {
     return ssid;
 }
 
-char* Credentials::getSSIDPassword(void) {
+char* Credentials::getSSIDPassword() {
     char* password = new char[WORD_MAX_SIZE];
     for (uint8_t i = 0; i < WORD_MAX_SIZE; i++) {
         password[i] = char(EEPROM.read(ADDRESS_SSID_PASSWORD + i));
@@ -92,7 +92,7 @@ char* Credentials::getSSIDPassword(void) {
     return password;
 }
 
-char* Credentials::getEmail(void) {
+char* Credentials::getEmail() {
     char* email = new char[WORD_MAX_SIZE];
     for (uint8_t i = 0; i < WORD_MAX_SIZE; i++) {
         email[i] = char(EEPROM.read(ADDRESS_EMAIL + i));
@@ -100,7 +100,7 @@ char* Credentials::getEmail(void) {
     return email;
 }
 
-char* Credentials::getEmailPassword(void) {
+char* Credentials::getEmailPassword() {
     char* password = new char[WORD_MAX_SIZE];
     for (uint8_t i = 0; i < WORD_MAX_SIZE; i++) {
         password[i] = char(EEPROM.read(ADDRESS_EMAIL_PASSWORD + i));
@@ -108,7 +108,7 @@ char* Credentials::getEmailPassword(void) {
     return password;
 }
 
-char* Credentials::getUserId(void) {
+char* Credentials::getUserId() {
     char* userId = new char[WORD_MAX_SIZE];
     for (uint8_t i = 0; i < WORD_MAX_SIZE; i++) {
         userId[i] = char(EEPROM.read(ADDRESS_USER_ID + i));
@@ -116,7 +116,7 @@ char* Credentials::getUserId(void) {
     return userId;
 }
 
-char* Credentials::getDeviceId(void) {
+char* Credentials::getDeviceId() {
     char* deviceId = new char[WORD_MAX_SIZE];
     for (uint8_t i = 0; i < WORD_MAX_SIZE; i++) {
         deviceId[i] = char(EEPROM.read(ADDRESS_DEVICE_ID + i));
@@ -162,14 +162,14 @@ bool Credentials::setAccountCredentials(char* email, char* password, char* userI
     return false;
 }
 
-bool Credentials::clear(void) {
+bool Credentials::clear() {
     if (_clearSSID() && _clearSSIDPassword() && _clearEmail() && _clearEmailPassword() && _clearUserId()) {
         return true;
     }
     return false;
 }
 
-bool Credentials::clearAll(void) {
+bool Credentials::clearAll() {
     for (uint8_t i = 0; i < EEPROM_SIZE; i++) {
         EEPROM.write(i, 0);
     }

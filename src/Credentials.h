@@ -19,26 +19,26 @@ class Credentials {
         bool _setEmail(char* email);
         bool _setEmailPassword(char* password);
         bool _setUserId(char* userId);
-        bool _clearSSID(void);
-        bool _clearSSIDPassword(void);
-        bool _clearEmail(void);
-        bool _clearEmailPassword(void);
-        bool _clearUserId(void);
+        bool _clearSSID();
+        bool _clearSSIDPassword();
+        bool _clearEmail();
+        bool _clearEmailPassword();
+        bool _clearUserId();
     public:
-        Credentials(void);
-        void begin(void);
-        char* getSSID(void);
-        char* getSSIDPassword(void);
-        char* getEmail(void);
-        char* getEmailPassword(void);
-        char* getUserId(void);
-        char* getDeviceId(void);
+        Credentials();
+        void begin();
+        char* getSSID();
+        char* getSSIDPassword();
+        char* getEmail();
+        char* getEmailPassword();
+        char* getUserId();
+        char* getDeviceId();
         bool setDeviceId(char* deviceId);
         bool setWiFiCredentials(char* ssid, char* password);
         bool setAccountCredentials(char* email, char* password);
         bool setAccountCredentials(char* email, char* password, char* userId);
-        bool clear(void);
-        bool clearAll(void);
+        bool clear();
+        bool clearAll();
 };
 
 #endif
