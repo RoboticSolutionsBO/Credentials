@@ -1,7 +1,7 @@
 # Credentials
-Credentials manager for Arduino based projects using EEPROM (also works with esp8266 and esp32). This tool will help you to store "permanently" different credentials that could be needed in your project.
+Credentials manager for Arduino-based projects using EEPROM (which also works with esp8266 and esp32 c++ projects). This tool will help you to store "permanently" different credentials that could be needed in your project.
 
-The credentials currently supported to be stored are: **WiFi** (SSID and password), **Account** (email, password and an optional user id) and **Deveice Id**.
+The credentials currently supported to be stored are: **WiFi** (SSID and password), **Account** (email, password and an optional user id) and ** Device Id**.
 
 ## Usage
 ### Initialization
@@ -13,14 +13,14 @@ credentials.begin();
 ```
 
 ### WiFi
-Store WiFi SSID and password crendetials:
+Store WiFi SSID and password credentials:
 ```cpp
-bool setWiFiCredentials((char* ssid, char* password);
+bool setWiFiCredentials(char* ssid, char* password);
 ```
 Get WiFi SSID and password:
 ```cpp
-char* getSSID(void);
-char* getSSIDPassword(void);
+char* getSSID();
+char* getSSIDPassword();
 ```
 ### Account
 Store an account email and password:
@@ -33,9 +33,9 @@ bool setAccountCredentials(char* email, char* password, char* userId);
 ```
 Get email, password and user id (if is set):
 ```cpp
-char* getEmail(void);
-char* getEmailPassword(void);
-char* getUserId(void);
+char* getEmail();
+char* getEmailPassword();
+char* getUserId();
 ```
 ### Device Id
 Store a device id for the microcontroller:
@@ -44,17 +44,19 @@ bool setDeviceId(char* deviceId);
 ```
 Get device id:
 ```cpp
-char* getDeviceId(void);
+char* getDeviceId();
 ```
 ### Other
 Clear WiFi and Account credentials
 ```cpp
-bool clear(void);
+bool clear();
 ```
-Clear everything (use carefully, normally you won't want to delete de Device Id)
+Clear everything (use carefully, normally you won't want to delete the Device Id)
 ```cpp
-bool clearAll(void);
+bool clearAll();
 ```
+<details><summary>Note</summary> The first time this library is used, it is recommended to run `clearAll()` once the first time in order to avoid unexpected behaviour or delete previous information stored from previous programs or projects.
+</details>
 
 ## Dev using Platformio
 
@@ -70,6 +72,6 @@ ln -s ../examples/main.cpp main.cpp
 
 ## TODO
 - [x] Add example
-- [ ] Improve example and add comments
+- [ ] Improve examples and add comments
 - [ ] Make the library Arduino IDE friendly
 - [x] Add development instructions
