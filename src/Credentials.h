@@ -3,14 +3,14 @@
 
 #include <Arduino.h>
 #include <EEPROM.h>
-#define EEPROM_SIZE 256
-#define WORD_MAX_SIZE 32
-#define ADDRESS_SSID 0
-#define ADDRESS_SSID_PASSWORD 32
-#define ADDRESS_EMAIL 64
-#define ADDRESS_EMAIL_PASSWORD 128
-#define ADDRESS_USER_ID 160
-#define ADDRESS_DEVICE_ID 192
+constexpr uint8_t eepromSize{255};
+constexpr uint8_t wordMaxSize{32};
+constexpr uint8_t addressSsid{0};
+constexpr uint8_t addressSsidPassword{32};
+constexpr uint8_t addressEmail{64};
+constexpr uint8_t addressEmailPassword{96};
+constexpr uint8_t addressUserId{128};
+constexpr uint8_t addressDeviceId{160};
 
 class Credentials {
     private:
