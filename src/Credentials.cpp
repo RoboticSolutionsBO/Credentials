@@ -7,35 +7,35 @@ void Credentials::begin() {
 }
 
 bool Credentials::_setSSID(char* ssid) {
-    for (size_t i = 0; i < strlen(ssid); i++) {
+    for (size_t i = 0, n = strlen(ssid); i < n; i++) {
         EEPROM.write(ADDRESS_SSID + i, ssid[i]);
     }
     return EEPROM.commit();
 }
 
 bool Credentials::_setSSIDPassword(char* password) {
-    for (size_t i = 0; i < strlen(password); i++) {
+    for (size_t i = 0, n = strlen(password); i < n; i++) {
         EEPROM.write(ADDRESS_SSID_PASSWORD + i, password[i]);
     }
     return EEPROM.commit();
 }
 
 bool Credentials::_setEmail(char* email) {
-    for (size_t i = 0; i < strlen(email); i++) {
+    for (size_t i = 0, n = strlen(email); i < n; i++) {
         EEPROM.write(ADDRESS_EMAIL + i, email[i]);
     }
     return EEPROM.commit();
 }
 
 bool Credentials::_setEmailPassword(char* password) {
-    for (size_t i = 0; i < strlen(password); i++) {
+    for (size_t i = 0, n = strlen(password); i < n; i++) {
         EEPROM.write(ADDRESS_EMAIL_PASSWORD + i, password[i]);
     }
     return EEPROM.commit();
 }
 
 bool Credentials::_setUserId(char* userId) {
-    for (size_t i = 0; i < strlen(userId); i++) {
+    for (size_t i = 0, n = strlen(userId); i < n; i++) {
         EEPROM.write(ADDRESS_USER_ID + i, userId[i]);
     }
     return EEPROM.commit();
@@ -125,8 +125,9 @@ char* Credentials::getDeviceId() {
 }
 
 bool Credentials::setDeviceId(char* deviceId) {
+    size_t size = strlen(deviceId);
     for (size_t i = 0; i < WORD_MAX_SIZE; i++) {
-        if (i < strlen(deviceId)) {
+        if (i < size) {
             EEPROM.write(ADDRESS_DEVICE_ID + i, deviceId[i]);
         } else {
             EEPROM.write(ADDRESS_DEVICE_ID + i, 0);
