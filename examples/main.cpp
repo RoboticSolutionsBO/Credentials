@@ -64,12 +64,12 @@ void loop() {
 }
 
 void setupCredencials() {
-    char ssid[wordMaxSize];
-    char ssidPassword[wordMaxSize];
-    char email[wordMaxSize];
-    char emailPassword[wordMaxSize];
-    char userId[wordMaxSize];
-    // char deviceId[wordMaxSize];
+    char ssid[WORD_MAX_SIZE];
+    char ssidPassword[WORD_MAX_SIZE];
+    char email[WORD_MAX_SIZE];
+    char emailPassword[WORD_MAX_SIZE];
+    char userId[WORD_MAX_SIZE];
+    // char deviceId[WORD_MAX_SIZE];
     strcpy(ssid, readSerial("SSID:"));
     strcpy(ssidPassword, readSerial("SSID Password:"));
     strcpy(email, readSerial("Email:"));
@@ -94,7 +94,7 @@ char* readSerial(const char* label) {
     Serial.print(label);
     Serial.print(" ");
     bool readData = false;
-    char* data = new char[wordMaxSize];
+    char* data = new char[WORD_MAX_SIZE];
     while (!readData) {
         if (Serial.available() > 0) {
             strcpy(data, Serial.readString().c_str());

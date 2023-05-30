@@ -58,7 +58,7 @@ bool clearAll();
 <details>
 <summary>Note</summary>
 
-The first time this library is used, it is recommended to run `clearAll()` once the first time in order to avoid unexpected behaviour or delete previous information stored from previous programs or projects.
+The first time this library is used, it is recommended to run `clearAll()` once the first time, in order to avoid unexpected behaviour or delete previous information stored from other programs or projects.
 </details>
 
 ## Dev using Platformio
